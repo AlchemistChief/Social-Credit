@@ -1,4 +1,5 @@
 // Game State
+const winningScore = 150;
 let currentScore = 25;
 let currentQuestionIndex = 0;
 let isJumpscareActive = false;
@@ -111,7 +112,7 @@ function showEndScreen() {
     endScoreText.textContent = `您的最终社会信用评分为: ${currentScore} 分`;
 
     // 200 or more points required to win
-    if (currentScore >= 200) {
+    if (currentScore >= winningScore) {
         endTitle.textContent = "光荣至极！";
 
         // Green English caption for winning
