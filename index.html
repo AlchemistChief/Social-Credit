@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社会信用测试 (Social Credit Test)</title>
+    <link rel="icon" href="assets/china.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <div id="score-container" class="hidden">
+        社会信用评分: <span id="score-value">100</span>
+    </div>
+
+    <section id="landing-page" class="view">
+        <button id="audio-test-btn" class="audio-test-corner-btn">🔊 测试音频 (Test Audio)</button>
+
+        <div class="landing-content">
+            <h1>社会信用测试</h1>
+            <button id="start-btn">Start Social Credit Test? / 开始社会信用测试？</button>
+        </div>
+    </section>
+
+    <section id="quiz-page" class="view hidden">
+        <h2 id="question-text">问题加载中...</h2>
+
+        <div class="quiz-container">
+            <div class="choice-box" id="left-choice">
+                <img id="left-img" src="" alt="Left Choice">
+            </div>
+
+            <div class="choice-box" id="right-choice">
+                <img id="right-img" src="" alt="Right Choice">
+            </div>
+        </div>
+
+        <div class="character-container">
+            <img src="assets/left_right.png" alt="Judge Character" class="judge-avatar">
+        </div>
+    </section>
+
+    <section id="end-page" class="view hidden">
+        <div class="landing-content">
+            <h1 id="end-title">测试结束</h1>
+            <p id="end-english-caption"
+                style="font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; text-align: center; text-transform: uppercase; letter-spacing: 2px;">
+            </p>
+
+            <p id="end-score-text" style="font-size: 1.8rem; margin-bottom: 20px; color: #fff; text-align: center;"></p>
+            <p id="end-message" style="font-size: 1.5rem; margin-bottom: 30px; text-align: center;"></p>
+            <button id="restart-btn">重新开始 / Restart</button>
+        </div>
+    </section>
+
+    <div id="feedback-overlay" class="feedback-overlay hidden">
+        <div class="feedback-content">
+            <img id="feedback-score-img" src="" alt="Score Result">
+            <button id="continue-btn">继续</button>
+        </div>
+    </div>
+
+    <script src="js/audio.js"></script>
+    <script src="js/quiz-data.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>

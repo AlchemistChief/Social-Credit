@@ -1,0 +1,1 @@
+Small social credit minigame.
