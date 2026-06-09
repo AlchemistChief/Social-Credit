@@ -1,6 +1,7 @@
 // Background loop audio
 const bgMusic = new Audio('assets/background.mp3');
 bgMusic.loop = true;
+bgMusic.volume = 0.3;
 
 // Sound effects
 const correctSound = new Audio('assets/correct.mp3');
