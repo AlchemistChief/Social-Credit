@@ -63,26 +63,33 @@ function handleChoice(chosenSide) {
 
     const randomImageNumber = availableImagePool[Math.floor(Math.random() * availableImagePool.length)];
 
+    //check Correct Answer
     if (chosenSide === currentData.correctChoice) {
         currentScore += 25;
         showImageSrc = `assets/score/plus_${randomImageNumber}.webp`;
         playSFX('correct');
+
+        isJumpscareActive = false;
+        feedbackScoreImg.src = showImageSrc;
+        feedbackOverlay.classList.remove('hidden');
+
     } else {
         currentScore -= 25;
         showImageSrc = `assets/score/minus_${randomImageNumber}.webp`;
         playSFX('wrong');
+
+        //trigger jumpscare if below 0 and wrong
+        if (currentScore < 0) {
+            isJumpscareActive = true;
+            triggerJumpscare();
+        } else {
+            isJumpscareActive = false;
+            feedbackScoreImg.src = showImageSrc;
+            feedbackOverlay.classList.remove('hidden');
+        }
     }
 
     updateScoreDisplay();
-
-    if (currentScore < 0) {
-        isJumpscareActive = true;
-        triggerJumpscare();
-    } else {
-        isJumpscareActive = false;
-        feedbackScoreImg.src = showImageSrc;
-        feedbackOverlay.classList.remove('hidden');
-    }
 }
 
 function triggerJumpscare() {
