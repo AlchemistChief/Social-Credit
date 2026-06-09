@@ -115,7 +115,6 @@
     object-fit: contain;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
-
     margin-bottom: 30px;
 }
 
@@ -136,7 +135,6 @@
     background-color: #fff;
 }
 
-/* Small audio test button in the top-left corner of the landing page */
 .audio-test-corner-btn {
     position: absolute;
     top: 20px;
@@ -158,33 +156,31 @@
     border-color: #ffcc00;
 }
 
-/* Chinese Propaganda Style End Page */
 #end-page {
     background-color: #cc0000;
-    /* Deep revolutionary red */
     background-image: radial-gradient(circle, #ffcc00 10%, transparent 11%);
     background-size: 30px 30px;
-    /* Subtle star/dot pattern background */
 }
 
 #end-page .landing-content {
     background-color: rgba(255, 204, 0, 0.95);
-    /* Bright yellow paper style container */
     border: 8px double #660000;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
     max-width: 600px;
-    color: #000000;
-    /* Strictly black text as requested */
 }
 
 #end-page h1,
-#end-page p {
+#end-score-text,
+#end-message {
     color: #000000 !important;
-    /* Forces all result text to be crisp black */
     font-family: "SimSun", "STSong", serif;
-    /* Traditional printing/propaganda font vibe */
+    font-weight: 900;
+}
+
+#end-english-caption {
+    font-family: "SimSun", "STSong", serif;
     font-weight: 900;
 }
 
