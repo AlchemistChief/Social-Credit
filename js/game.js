@@ -13,6 +13,7 @@ const startBtn = document.getElementById('start-btn');
 const audioTestBtn = document.getElementById('audio-test-btn');
 
 const questionText = document.getElementById('question-text');
+const questionPinyin = document.getElementById('question-pinyin');
 const leftChoice = document.getElementById('left-choice');
 const rightChoice = document.getElementById('right-choice');
 const leftImg = document.getElementById('left-img');
@@ -32,7 +33,7 @@ const restartBtn = document.getElementById('restart-btn');
 
 // Start Game
 startBtn.addEventListener('click', () => {
-    initAudio();
+    if (typeof initAudio === 'function') initAudio();
     landingPage.classList.add('hidden');
     quizPage.classList.remove('hidden');
     scoreContainer.classList.remove('hidden');
@@ -43,7 +44,7 @@ startBtn.addEventListener('click', () => {
 // Audio Test
 audioTestBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    playSFX('test');
+    if (typeof playSFX === 'function') playSFX('test');
 });
 
 function loadQuestion() {
@@ -54,6 +55,7 @@ function loadQuestion() {
 
     const currentData = quizQuestions[currentQuestionIndex];
     questionText.textContent = currentData.question;
+    questionPinyin.textContent = currentData.pinyin;
     leftImg.src = `assets/choices/${currentData.leftImg}`;
     rightImg.src = `assets/choices/${currentData.rightImg}`;
 }
@@ -68,7 +70,7 @@ function handleChoice(chosenSide) {
     if (chosenSide === currentData.correctChoice) {
         currentScore += 25;
         showImageSrc = `assets/score/plus_${randomImageNumber}.webp`;
-        playSFX('correct');
+        if (typeof playSFX === 'function') playSFX('correct');
 
         isJumpscareActive = false;
         feedbackScoreImg.src = showImageSrc;
@@ -77,7 +79,7 @@ function handleChoice(chosenSide) {
     } else {
         currentScore -= 25;
         showImageSrc = `assets/score/minus_${randomImageNumber}.webp`;
-        playSFX('wrong');
+        if (typeof playSFX === 'function') playSFX('wrong');
 
         //trigger jumpscare if below 0 and wrong
         if (currentScore < 0) {
@@ -94,7 +96,7 @@ function handleChoice(chosenSide) {
 }
 
 function triggerJumpscare() {
-    playSFX('scare');
+    if (typeof playSFX === 'function') playSFX('scare');
     feedbackScoreImg.src = "assets/scare.webp";
     feedbackOverlay.classList.remove('hidden');
 }
@@ -120,7 +122,7 @@ function showEndScreen() {
         endEnglishCaption.style.color = "#00cc00";
 
         endMessage.innerHTML = "🎉 伟大胜利！你是社会的模范支柱！<br>国家因你的崇高选择而自豪，继续保持光荣的步伐！";
-        playSFX('win');
+        if (typeof playSFX === 'function') playSFX('win');
     } else {
         endTitle.textContent = "深刻反省！";
 
@@ -129,7 +131,7 @@ function showEndScreen() {
         endEnglishCaption.style.color = "#cc0000";
 
         endMessage.innerHTML = "⚠️ 极其危险！你的思想觉悟仍需彻底洗礼！<br>劳动带来觉醒，立刻重新测试并提升你的社会贡献！";
-        playSFX('lose');
+        if (typeof playSFX === 'function') playSFX('lose');
     }
 }
 

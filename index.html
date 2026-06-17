@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
 </head>
+
 <body>
     <div id="score-container" class="hidden">
         社会信用评分: <span id="score-value">100</span>
@@ -24,6 +26,9 @@
 
     <section id="quiz-page" class="view hidden">
         <h2 id="question-text">问题加载中...</h2>
+        <h3 id="question-pinyin"
+            style="color: #cccccc; font-weight: normal; margin-top: -10px; margin-bottom: 20px; text-align: center;">
+        </h3>
 
         <div class="quiz-container">
             <div class="choice-box" id="left-choice">
@@ -64,4 +69,5 @@
     <script src="js/quiz-data.js"></script>
     <script src="js/game.js"></script>
 </body>
+
 </html>
