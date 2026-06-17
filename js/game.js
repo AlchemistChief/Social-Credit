@@ -107,30 +107,47 @@ function updateScoreDisplay() {
 
 // Show final propaganda result screen based on score
 function showEndScreen() {
+    if (currentScore < 100) {
+        const jumpscareOverlay = document.getElementById('jumpscare-overlay');
+
+        // 1. Mute everything
+        bgMusic.muted = true;
+
+        jumpscareOverlay.classList.remove('hidden');
+
+        // 2. Play the specific jumpscare sound
+        if (typeof playSFX === 'function') playSFX('jumpscare');
+
+        // 3. Wait 2 seconds (2000ms)
+        setTimeout(() => {
+            jumpscareOverlay.classList.add('hidden');
+
+            bgMusic.muted = false;
+            renderEndScreen();
+        }, 7000);
+    } else {
+        renderEndScreen();
+    }
+}
+
+function renderEndScreen() {
     quizPage.classList.add('hidden');
     scoreContainer.classList.add('hidden');
     endPage.classList.remove('hidden');
 
     endScoreText.textContent = `您的最终社会信用评分为: ${currentScore} 分`;
 
-    // 200 or more points required to win
     if (currentScore >= winningScore) {
         endTitle.textContent = "光荣至极！";
-
-        // Green English caption for winning
         endEnglishCaption.textContent = "You Won";
         endEnglishCaption.style.color = "#00cc00";
-
-        endMessage.innerHTML = "🎉 伟大胜利！你是社会的模范支柱！<br>国家因你的崇高选择而自豪，继续保持光荣的步伐！";
+        endMessage.innerHTML = "🎉 伟大胜利！你是社会的模范支柱！";
         if (typeof playSFX === 'function') playSFX('win');
     } else {
         endTitle.textContent = "深刻反省！";
-
-        // Red English caption for losing
         endEnglishCaption.textContent = "You Lost";
         endEnglishCaption.style.color = "#cc0000";
-
-        endMessage.innerHTML = "⚠️ 极其危险！你的思想觉悟仍需彻底洗礼！<br>劳动带来觉醒，立刻重新测试并提升你的社会贡献！";
+        endMessage.innerHTML = "⚠️ 极其危险！你的思想觉悟仍需彻底洗礼！";
         if (typeof playSFX === 'function') playSFX('lose');
     }
 }

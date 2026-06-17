@@ -7,6 +7,7 @@ bgMusic.volume = 0.3;
 const correctSound = new Audio('assets/correct.mp3');
 const wrongSound = new Audio('assets/wrong.mp3');
 const scareSound = new Audio('assets/scare.mp3');
+const jumpscareSound = new Audio('assets/jumpscare.mp3')
 const testSound = new Audio('assets/test.mp3');
 const winSound = new Audio('assets/win.mp3');
 const loseSound = new Audio('assets/lose.mp3');
@@ -27,6 +28,9 @@ function playSFX(type) {
     } else if (type === 'scare') {
         scareSound.currentTime = 0;
         scareSound.play();
+    } else if (type === 'jumpscare') {
+        jumpscareSound.currentTime = 0;
+        jumpscareSound.play();
     } else if (type === 'test') {
         testSound.currentTime = 0;
         testSound.play();
